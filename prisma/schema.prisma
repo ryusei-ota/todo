@@ -26,3 +26,21 @@ generator nestgraphql {
    decorate_2_arguments   = "['() => {propertyType.0}']"
    decorate_2_name        = Type
  }
+
+model todo{
+ /// @Field(type => Int)
+  id Int @id @default(autoincrement())
+
+  /// @Validator.IsNotEmpty()
+  name String
+
+  deadline DateTime
+
+  /// @Validator.IsNotEmpty()
+  done_at  Boolean
+
+  /// @Validator.IsNotEmpty()
+  note String
+}
+
+
