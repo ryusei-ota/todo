@@ -38,4 +38,13 @@ model todo{
   limit DateTime
   ///@IsBoolean()
   done_at  Boolean
+  // users user[] @relation("users_post")
+  // @@map("posts")
 }
+
+// model user{
+//   /// @Field(type => Int)
+//   id Int @id @default(autoincrement())
+//   posts todo[] @relation("usres_post")
+//   @@map("users")
+// }

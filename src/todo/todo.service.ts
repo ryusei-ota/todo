@@ -15,7 +15,7 @@ export class TodoService {
   async findFirst(args: FindFirsttodoArgs): Promise<todo> {
     return this.prisma.todo.findFirst(args);
   }
-
+a
   //全件取得
   async findAll(args:FindManytodoArgs): Promise<todo[]> {
     return await this.prisma.todo.findMany();
