@@ -3,8 +3,6 @@ import { PrismaService } from 'src/prisma.service';
 import { todo } from 'src/@generated/prisma-nestjs-graphql/todo/todo.model';
 import { FindFirsttodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/find-firsttodo.args';
 import { CreateOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/create-onetodo.args';
-import { FindUniquetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/find-uniquetodo.args';
-import { FindManytodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/find-manytodo.args';
 import { UpdateOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/update-onetodo.args';
 
 @Injectable()
