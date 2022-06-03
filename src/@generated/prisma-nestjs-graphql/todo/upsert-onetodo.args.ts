@@ -1,22 +1,22 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
-import { todoWhereUniqueInput } from './todo-where-unique.input';
+import { TodoWhereUniqueInput } from './todo-where-unique.input';
 import { Type } from 'class-transformer';
-import { todoCreateInput } from './todo-create.input';
-import { todoUpdateInput } from './todo-update.input';
+import { TodoCreateInput } from './todo-create.input';
+import { TodoUpdateInput } from './todo-update.input';
 
 @ArgsType()
 export class UpsertOnetodoArgs {
 
-    @Field(() => todoWhereUniqueInput, {nullable:false})
-    @Type(() => todoWhereUniqueInput)
-    where!: todoWhereUniqueInput;
+    @Field(() => TodoWhereUniqueInput, {nullable:false})
+    @Type(() => TodoWhereUniqueInput)
+    where!: TodoWhereUniqueInput;
 
-    @Field(() => todoCreateInput, {nullable:false})
-    @Type(() => todoCreateInput)
-    create!: todoCreateInput;
+    @Field(() => TodoCreateInput, {nullable:false})
+    @Type(() => TodoCreateInput)
+    create!: TodoCreateInput;
 
-    @Field(() => todoUpdateInput, {nullable:false})
-    @Type(() => todoUpdateInput)
-    update!: todoUpdateInput;
+    @Field(() => TodoUpdateInput, {nullable:false})
+    @Type(() => TodoUpdateInput)
+    update!: TodoUpdateInput;
 }

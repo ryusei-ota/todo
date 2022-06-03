@@ -3,7 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 
 @InputType()
-export class todoWhereUniqueInput {
+export class TodoWhereUniqueInput {
 
     @Field(() => Int, {nullable:true})
     id?: number;

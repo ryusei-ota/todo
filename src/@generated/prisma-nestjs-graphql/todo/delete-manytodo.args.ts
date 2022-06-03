@@ -1,12 +1,12 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
-import { todoWhereInput } from './todo-where.input';
+import { TodoWhereInput } from './todo-where.input';
 import { Type } from 'class-transformer';
 
 @ArgsType()
 export class DeleteManytodoArgs {
 
-    @Field(() => todoWhereInput, {nullable:true})
-    @Type(() => todoWhereInput)
-    where?: todoWhereInput;
+    @Field(() => TodoWhereInput, {nullable:true})
+    @Type(() => TodoWhereInput)
+    where?: TodoWhereInput;
 }

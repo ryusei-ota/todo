@@ -6,6 +6,7 @@ import { join } from 'path';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { PrismaService } from './prisma.service';
 import { TodoModule } from './todo/todo.module';
+import { UserModule } from './user/user.module';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -13,6 +14,7 @@ import { TodoModule } from './todo/todo.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TodoModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

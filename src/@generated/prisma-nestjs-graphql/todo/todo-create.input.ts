@@ -1,8 +1,9 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
+import { UserCreateNestedOneWithoutTodoInput } from '../user/user-create-nested-one-without-todo.input';
 
 @InputType()
-export class todoCreateInput {
+export class TodoCreateInput {
 
     @Field(() => String, {nullable:false})
     todo!: string;
@@ -12,4 +13,7 @@ export class todoCreateInput {
 
     @Field(() => Boolean, {nullable:false})
     done_at!: boolean;
+
+    @Field(() => UserCreateNestedOneWithoutTodoInput, {nullable:true})
+    user?: UserCreateNestedOneWithoutTodoInput;
 }
