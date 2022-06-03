@@ -10,4 +10,3 @@ export class UserService {
       return this.prisma.user.create(args);
   }
 }
-sa
