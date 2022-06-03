@@ -30,17 +30,12 @@ generator nestgraphql {
 model todo{
  /// @Field(type => Int)
   id Int @id @default(autoincrement())
-
-  /// @Validator.IsNotEmpty()
-  name String
-
-  deadline DateTime
-
-  /// @Validator.IsNotEmpty()
+  /// @IsNotEmpty()
+  ///@IsString()
+  todo String
+  /// @IsNotEmpty()
+  ///@IsString()
+  limit DateTime
+  ///@IsBoolean()
   done_at  Boolean
-
-  /// @Validator.IsNotEmpty()
-  note String
 }
-
-

@@ -1,0 +1,164 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type todo {
+  id: ID!
+  todo: String!
+  limit: DateTime!
+  done_at: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  user(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
+  findAll(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
+}
+
+input todoWhereInput {
+  AND: [todoWhereInput!]
+  OR: [todoWhereInput!]
+  NOT: [todoWhereInput!]
+  id: IntFilter
+  todo: StringFilter
+  limit: DateTimeFilter
+  done_at: BoolFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input todoOrderByWithRelationInput {
+  id: SortOrder
+  todo: SortOrder
+  limit: SortOrder
+  done_at: SortOrder
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input todoWhereUniqueInput {
+  id: Int
+}
+
+enum TodoScalarFieldEnum {
+  id
+  todo
+  limit
+  done_at
+}
+
+type Mutation {
+  createTodo(data: todoCreateInput!): todo!
+  updateTodo(data: todoUpdateInput!, where: todoWhereUniqueInput!): todo!
+}
+
+input todoCreateInput {
+  todo: String!
+  limit: DateTime!
+  done_at: Boolean!
+}
+
+input todoUpdateInput {
+  todo: StringFieldUpdateOperationsInput
+  limit: DateTimeFieldUpdateOperationsInput
+  done_at: BoolFieldUpdateOperationsInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
