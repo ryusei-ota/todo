@@ -8,8 +8,8 @@ export class UserResolver {
   constructor(private readonly userService : UserService){}
   
   //登録
-  @Mutation(() => User)
-  async createTodo(@Args() args: CreateOneUserArgs) {
+  @Mutation(() => User,{name:'createUser'})
+  async createUser(@Args() args: CreateOneUserArgs) {
     return this.userService.createUser(args);
   }
 }
