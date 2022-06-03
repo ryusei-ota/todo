@@ -16,7 +16,7 @@ scalar DateTime
 
 type Query {
   user(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
-  findAll(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
+  findAll(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): [todo!]!
 }
 
 input todoWhereInput {
@@ -137,6 +137,7 @@ enum TodoScalarFieldEnum {
 type Mutation {
   createTodo(data: todoCreateInput!): todo!
   updateTodo(data: todoUpdateInput!, where: todoWhereUniqueInput!): todo!
+  deleteTodo(where: todoWhereUniqueInput!): todo!
 }
 
 input todoCreateInput {
