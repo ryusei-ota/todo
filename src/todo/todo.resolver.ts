@@ -12,7 +12,7 @@ export class TodoResolver {
   constructor(private readonly todoService: TodoService) {}
 
   @Query(() => todo)
-  user(@Args() args: FindFirsttodoArgs) {
+  todo(@Args() args: FindFirsttodoArgs) {
     return this.todoService.findFirst(args);
   }
 

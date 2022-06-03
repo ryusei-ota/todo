@@ -15,7 +15,7 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
-  user(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
+  todo(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
   findAll(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): [todo!]!
 }
 
