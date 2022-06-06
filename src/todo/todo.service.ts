@@ -10,14 +10,14 @@ import { DeleteOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/del
 @Injectable()
 export class TodoService {
   constructor(private readonly prisma: PrismaService) {}
-  
+
   //1件取得
   async findFirst(args: FindFirsttodoArgs): Promise<Todo> {
     return this.prisma.todo.findFirst(args);
   }
 
   //全件取得
-  async findAll(args:FindManytodoArgs): Promise<Todo[]> {
+  async findAll(args: FindManytodoArgs): Promise<Todo[]> {
     return await this.prisma.todo.findMany();
   }
 
@@ -32,7 +32,7 @@ export class TodoService {
   }
 
   //削除
-  async deleteTodo(args:DeleteOnetodoArgs){
+  async deleteTodo(args: DeleteOnetodoArgs) {
     return this.prisma.todo.delete(args);
   }
 }

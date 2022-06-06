@@ -37,7 +37,7 @@ export class TodoResolver {
 
   //削除
   @Mutation(() => Todo)
-  async deleteTodo(@Args() args: DeleteOnetodoArgs){
+  async deleteTodo(@Args() args: DeleteOnetodoArgs) {
     return this.todoService.deleteTodo(args);
   }
 }

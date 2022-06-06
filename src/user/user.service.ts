@@ -4,9 +4,9 @@ import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class UserService {
-    constructor(private readonly prisma: PrismaService) {}
-    //登録  
-    async createUser(args: CreateOneUserArgs){
-      return this.prisma.user.create(args);
+  constructor(private readonly prisma: PrismaService) {}
+  //登録
+  async createUser(args: CreateOneUserArgs) {
+    return this.prisma.user.create(args);
   }
 }
