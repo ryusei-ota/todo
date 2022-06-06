@@ -4,8 +4,8 @@ import { InputType } from '@nestjs/graphql';
 @InputType()
 export class UserCreateWithoutTodoInput {
 
-    @Field(() => String, {nullable:true})
-    name?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;

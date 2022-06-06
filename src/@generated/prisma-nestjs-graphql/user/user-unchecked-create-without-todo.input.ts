@@ -8,8 +8,8 @@ export class UserUncheckedCreateWithoutTodoInput {
     @Field(() => Int, {nullable:true})
     id?: number;
 
-    @Field(() => String, {nullable:true})
-    name?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;

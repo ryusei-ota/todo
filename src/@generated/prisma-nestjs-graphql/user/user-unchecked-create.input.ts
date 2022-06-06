@@ -12,8 +12,8 @@ export class UserUncheckedCreateInput {
     @Field(() => TodoUncheckedCreateNestedManyWithoutUserInput, {nullable:true})
     todo?: TodoUncheckedCreateNestedManyWithoutUserInput;
 
-    @Field(() => String, {nullable:true})
-    name?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
