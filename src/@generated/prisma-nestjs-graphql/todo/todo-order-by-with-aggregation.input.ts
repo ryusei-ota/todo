@@ -1,14 +1,14 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { SortOrder } from '../prisma/sort-order.enum';
-import { todoCountOrderByAggregateInput } from './todo-count-order-by-aggregate.input';
-import { todoAvgOrderByAggregateInput } from './todo-avg-order-by-aggregate.input';
-import { todoMaxOrderByAggregateInput } from './todo-max-order-by-aggregate.input';
-import { todoMinOrderByAggregateInput } from './todo-min-order-by-aggregate.input';
-import { todoSumOrderByAggregateInput } from './todo-sum-order-by-aggregate.input';
+import { TodoCountOrderByAggregateInput } from './todo-count-order-by-aggregate.input';
+import { TodoAvgOrderByAggregateInput } from './todo-avg-order-by-aggregate.input';
+import { TodoMaxOrderByAggregateInput } from './todo-max-order-by-aggregate.input';
+import { TodoMinOrderByAggregateInput } from './todo-min-order-by-aggregate.input';
+import { TodoSumOrderByAggregateInput } from './todo-sum-order-by-aggregate.input';
 
 @InputType()
-export class todoOrderByWithAggregationInput {
+export class TodoOrderByWithAggregationInput {
 
     @Field(() => SortOrder, {nullable:true})
     id?: keyof typeof SortOrder;
@@ -22,18 +22,21 @@ export class todoOrderByWithAggregationInput {
     @Field(() => SortOrder, {nullable:true})
     done_at?: keyof typeof SortOrder;
 
-    @Field(() => todoCountOrderByAggregateInput, {nullable:true})
-    _count?: todoCountOrderByAggregateInput;
+    @Field(() => SortOrder, {nullable:true})
+    userId?: keyof typeof SortOrder;
 
-    @Field(() => todoAvgOrderByAggregateInput, {nullable:true})
-    _avg?: todoAvgOrderByAggregateInput;
+    @Field(() => TodoCountOrderByAggregateInput, {nullable:true})
+    _count?: TodoCountOrderByAggregateInput;
 
-    @Field(() => todoMaxOrderByAggregateInput, {nullable:true})
-    _max?: todoMaxOrderByAggregateInput;
+    @Field(() => TodoAvgOrderByAggregateInput, {nullable:true})
+    _avg?: TodoAvgOrderByAggregateInput;
 
-    @Field(() => todoMinOrderByAggregateInput, {nullable:true})
-    _min?: todoMinOrderByAggregateInput;
+    @Field(() => TodoMaxOrderByAggregateInput, {nullable:true})
+    _max?: TodoMaxOrderByAggregateInput;
 
-    @Field(() => todoSumOrderByAggregateInput, {nullable:true})
-    _sum?: todoSumOrderByAggregateInput;
+    @Field(() => TodoMinOrderByAggregateInput, {nullable:true})
+    _min?: TodoMinOrderByAggregateInput;
+
+    @Field(() => TodoSumOrderByAggregateInput, {nullable:true})
+    _sum?: TodoSumOrderByAggregateInput;
 }

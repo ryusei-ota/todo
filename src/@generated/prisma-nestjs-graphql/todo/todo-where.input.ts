@@ -4,18 +4,20 @@ import { IntFilter } from '../prisma/int-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { BoolFilter } from '../prisma/bool-filter.input';
+import { UserRelationFilter } from '../user/user-relation-filter.input';
+import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 
 @InputType()
-export class todoWhereInput {
+export class TodoWhereInput {
 
-    @Field(() => [todoWhereInput], {nullable:true})
-    AND?: Array<todoWhereInput>;
+    @Field(() => [TodoWhereInput], {nullable:true})
+    AND?: Array<TodoWhereInput>;
 
-    @Field(() => [todoWhereInput], {nullable:true})
-    OR?: Array<todoWhereInput>;
+    @Field(() => [TodoWhereInput], {nullable:true})
+    OR?: Array<TodoWhereInput>;
 
-    @Field(() => [todoWhereInput], {nullable:true})
-    NOT?: Array<todoWhereInput>;
+    @Field(() => [TodoWhereInput], {nullable:true})
+    NOT?: Array<TodoWhereInput>;
 
     @Field(() => IntFilter, {nullable:true})
     id?: IntFilter;
@@ -28,4 +30,10 @@ export class todoWhereInput {
 
     @Field(() => BoolFilter, {nullable:true})
     done_at?: BoolFilter;
+
+    @Field(() => UserRelationFilter, {nullable:true})
+    user?: UserRelationFilter;
+
+    @Field(() => IntNullableFilter, {nullable:true})
+    userId?: IntNullableFilter;
 }

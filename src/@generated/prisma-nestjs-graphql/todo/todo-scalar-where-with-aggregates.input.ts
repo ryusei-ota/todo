@@ -4,18 +4,19 @@ import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.in
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
 import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 import { BoolWithAggregatesFilter } from '../prisma/bool-with-aggregates-filter.input';
+import { IntNullableWithAggregatesFilter } from '../prisma/int-nullable-with-aggregates-filter.input';
 
 @InputType()
-export class todoScalarWhereWithAggregatesInput {
+export class TodoScalarWhereWithAggregatesInput {
 
-    @Field(() => [todoScalarWhereWithAggregatesInput], {nullable:true})
-    AND?: Array<todoScalarWhereWithAggregatesInput>;
+    @Field(() => [TodoScalarWhereWithAggregatesInput], {nullable:true})
+    AND?: Array<TodoScalarWhereWithAggregatesInput>;
 
-    @Field(() => [todoScalarWhereWithAggregatesInput], {nullable:true})
-    OR?: Array<todoScalarWhereWithAggregatesInput>;
+    @Field(() => [TodoScalarWhereWithAggregatesInput], {nullable:true})
+    OR?: Array<TodoScalarWhereWithAggregatesInput>;
 
-    @Field(() => [todoScalarWhereWithAggregatesInput], {nullable:true})
-    NOT?: Array<todoScalarWhereWithAggregatesInput>;
+    @Field(() => [TodoScalarWhereWithAggregatesInput], {nullable:true})
+    NOT?: Array<TodoScalarWhereWithAggregatesInput>;
 
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     id?: IntWithAggregatesFilter;
@@ -28,4 +29,7 @@ export class todoScalarWhereWithAggregatesInput {
 
     @Field(() => BoolWithAggregatesFilter, {nullable:true})
     done_at?: BoolWithAggregatesFilter;
+
+    @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
+    userId?: IntNullableWithAggregatesFilter;
 }

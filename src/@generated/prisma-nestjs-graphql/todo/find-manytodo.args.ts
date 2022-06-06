@@ -1,24 +1,24 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
-import { todoWhereInput } from './todo-where.input';
+import { TodoWhereInput } from './todo-where.input';
 import { Type } from 'class-transformer';
-import { todoOrderByWithRelationInput } from './todo-order-by-with-relation.input';
-import { todoWhereUniqueInput } from './todo-where-unique.input';
+import { TodoOrderByWithRelationInput } from './todo-order-by-with-relation.input';
+import { TodoWhereUniqueInput } from './todo-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { TodoScalarFieldEnum } from '../prisma/todo-scalar-field.enum';
 
 @ArgsType()
 export class FindManytodoArgs {
 
-    @Field(() => todoWhereInput, {nullable:true})
-    @Type(() => todoWhereInput)
-    where?: todoWhereInput;
+    @Field(() => TodoWhereInput, {nullable:true})
+    @Type(() => TodoWhereInput)
+    where?: TodoWhereInput;
 
-    @Field(() => [todoOrderByWithRelationInput], {nullable:true})
-    orderBy?: Array<todoOrderByWithRelationInput>;
+    @Field(() => [TodoOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<TodoOrderByWithRelationInput>;
 
-    @Field(() => todoWhereUniqueInput, {nullable:true})
-    cursor?: todoWhereUniqueInput;
+    @Field(() => TodoWhereUniqueInput, {nullable:true})
+    cursor?: TodoWhereUniqueInput;
 
     @Field(() => Int, {nullable:true})
     take?: number;

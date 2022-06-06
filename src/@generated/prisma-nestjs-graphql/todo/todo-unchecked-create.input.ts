@@ -3,7 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 
 @InputType()
-export class todoUncheckedCreateInput {
+export class TodoUncheckedCreateInput {
 
     @Field(() => Int, {nullable:true})
     id?: number;
@@ -16,4 +16,7 @@ export class todoUncheckedCreateInput {
 
     @Field(() => Boolean, {nullable:false})
     done_at!: boolean;
+
+    @Field(() => Int, {nullable:true})
+    userId?: number;
 }

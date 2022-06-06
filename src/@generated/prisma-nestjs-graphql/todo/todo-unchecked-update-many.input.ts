@@ -4,9 +4,10 @@ import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operat
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
+import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 
 @InputType()
-export class todoUncheckedUpdateManyInput {
+export class TodoUncheckedUpdateManyInput {
 
     @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
     id?: IntFieldUpdateOperationsInput;
@@ -19,4 +20,7 @@ export class todoUncheckedUpdateManyInput {
 
     @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
     done_at?: BoolFieldUpdateOperationsInput;
+
+    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
+    userId?: NullableIntFieldUpdateOperationsInput;
 }

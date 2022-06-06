@@ -1,31 +1,51 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
-import { todoWhereInput } from './todo-where.input';
+import { TodoWhereInput } from './todo-where.input';
 import { Type } from 'class-transformer';
-import { todoOrderByWithAggregationInput } from './todo-order-by-with-aggregation.input';
-import { TodoScalarFieldEnum } from '../prisma/todo-scalar-field.enum';
-import { todoScalarWhereWithAggregatesInput } from './todo-scalar-where-with-aggregates.input';
+import { TodoOrderByWithAggregationInput } from './todo-order-by-with-aggregation.input';
+import { TodoScalarFieldEnum } from './todo-scalar-field.enum';
+import { TodoScalarWhereWithAggregatesInput } from './todo-scalar-where-with-aggregates.input';
 import { Int } from '@nestjs/graphql';
+import { TodoCountAggregateInput } from './todo-count-aggregate.input';
+import { TodoAvgAggregateInput } from './todo-avg-aggregate.input';
+import { TodoSumAggregateInput } from './todo-sum-aggregate.input';
+import { TodoMinAggregateInput } from './todo-min-aggregate.input';
+import { TodoMaxAggregateInput } from './todo-max-aggregate.input';
 
 @ArgsType()
-export class todoGroupByArgs {
+export class TodoGroupByArgs {
 
-    @Field(() => todoWhereInput, {nullable:true})
-    @Type(() => todoWhereInput)
-    where?: todoWhereInput;
+    @Field(() => TodoWhereInput, {nullable:true})
+    @Type(() => TodoWhereInput)
+    where?: TodoWhereInput;
 
-    @Field(() => [todoOrderByWithAggregationInput], {nullable:true})
-    orderBy?: Array<todoOrderByWithAggregationInput>;
+    @Field(() => [TodoOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<TodoOrderByWithAggregationInput>;
 
     @Field(() => [TodoScalarFieldEnum], {nullable:false})
     by!: Array<keyof typeof TodoScalarFieldEnum>;
 
-    @Field(() => todoScalarWhereWithAggregatesInput, {nullable:true})
-    having?: todoScalarWhereWithAggregatesInput;
+    @Field(() => TodoScalarWhereWithAggregatesInput, {nullable:true})
+    having?: TodoScalarWhereWithAggregatesInput;
 
     @Field(() => Int, {nullable:true})
     take?: number;
 
     @Field(() => Int, {nullable:true})
     skip?: number;
+
+    @Field(() => TodoCountAggregateInput, {nullable:true})
+    _count?: TodoCountAggregateInput;
+
+    @Field(() => TodoAvgAggregateInput, {nullable:true})
+    _avg?: TodoAvgAggregateInput;
+
+    @Field(() => TodoSumAggregateInput, {nullable:true})
+    _sum?: TodoSumAggregateInput;
+
+    @Field(() => TodoMinAggregateInput, {nullable:true})
+    _min?: TodoMinAggregateInput;
+
+    @Field(() => TodoMaxAggregateInput, {nullable:true})
+    _max?: TodoMaxAggregateInput;
 }

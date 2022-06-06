@@ -2,11 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type todo {
+type UserCount {
+  todo: Int!
+}
+
+type User {
   id: ID!
-  todo: String!
-  limit: DateTime!
-  done_at: Boolean!
+  todo: [Todo!]
+  name: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  _count: UserCount!
 }
 
 """
@@ -14,19 +20,30 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type Query {
-  user(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
-  findAll(where: todoWhereInput, orderBy: [todoOrderByWithRelationInput!], cursor: todoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): todo!
+type Todo {
+  id: ID!
+  todo: String!
+  limit: DateTime!
+  done_at: Boolean!
+  user: User
+  userId: Int
 }
 
-input todoWhereInput {
-  AND: [todoWhereInput!]
-  OR: [todoWhereInput!]
-  NOT: [todoWhereInput!]
+type Query {
+  todo(where: TodoWhereInput, orderBy: [TodoOrderByWithRelationInput!], cursor: TodoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): Todo!
+  findAll(where: TodoWhereInput, orderBy: [TodoOrderByWithRelationInput!], cursor: TodoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): [Todo!]!
+}
+
+input TodoWhereInput {
+  AND: [TodoWhereInput!]
+  OR: [TodoWhereInput!]
+  NOT: [TodoWhereInput!]
   id: IntFilter
   todo: StringFilter
   limit: DateTimeFilter
   done_at: BoolFilter
+  user: UserRelationFilter
+  userId: IntNullableFilter
 }
 
 input IntFilter {
@@ -111,11 +128,85 @@ input NestedBoolFilter {
   not: NestedBoolFilter
 }
 
-input todoOrderByWithRelationInput {
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  id: IntFilter
+  todo: TodoListRelationFilter
+  name: StringNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TodoListRelationFilter {
+  every: TodoWhereInput
+  some: TodoWhereInput
+  none: TodoWhereInput
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input TodoOrderByWithRelationInput {
   id: SortOrder
   todo: SortOrder
   limit: SortOrder
   done_at: SortOrder
+  user: UserOrderByWithRelationInput
+  userId: SortOrder
 }
 
 enum SortOrder {
@@ -123,7 +214,19 @@ enum SortOrder {
   desc
 }
 
-input todoWhereUniqueInput {
+input UserOrderByWithRelationInput {
+  id: SortOrder
+  todo: TodoOrderByRelationAggregateInput
+  name: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+}
+
+input TodoOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TodoWhereUniqueInput {
   id: Int
 }
 
@@ -135,20 +238,45 @@ enum TodoScalarFieldEnum {
 }
 
 type Mutation {
-  createTodo(data: todoCreateInput!): todo!
-  updateTodo(data: todoUpdateInput!, where: todoWhereUniqueInput!): todo!
+  createTodo(data: TodoCreateInput!): Todo!
+  updateTodo(data: TodoUpdateInput!, where: TodoWhereUniqueInput!): Todo!
+  deleteTodo(where: TodoWhereUniqueInput!): Todo!
+  createUser(data: UserCreateInput!): User!
 }
 
-input todoCreateInput {
+input TodoCreateInput {
   todo: String!
   limit: DateTime!
   done_at: Boolean!
+  user: UserCreateNestedOneWithoutTodoInput
 }
 
-input todoUpdateInput {
+input UserCreateNestedOneWithoutTodoInput {
+  create: UserCreateWithoutTodoInput
+  connectOrCreate: UserCreateOrConnectWithoutTodoInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutTodoInput {
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserCreateOrConnectWithoutTodoInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutTodoInput!
+}
+
+input UserWhereUniqueInput {
+  id: Int
+}
+
+input TodoUpdateInput {
   todo: StringFieldUpdateOperationsInput
   limit: DateTimeFieldUpdateOperationsInput
   done_at: BoolFieldUpdateOperationsInput
+  user: UserUpdateOneWithoutTodoInput
 }
 
 input StringFieldUpdateOperationsInput {
@@ -161,4 +289,53 @@ input DateTimeFieldUpdateOperationsInput {
 
 input BoolFieldUpdateOperationsInput {
   set: Boolean
+}
+
+input UserUpdateOneWithoutTodoInput {
+  create: UserCreateWithoutTodoInput
+  connectOrCreate: UserCreateOrConnectWithoutTodoInput
+  upsert: UserUpsertWithoutTodoInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutTodoInput
+}
+
+input UserUpsertWithoutTodoInput {
+  update: UserUpdateWithoutTodoInput!
+  create: UserCreateWithoutTodoInput!
+}
+
+input UserUpdateWithoutTodoInput {
+  name: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input UserCreateInput {
+  todo: TodoCreateNestedManyWithoutUserInput
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TodoCreateNestedManyWithoutUserInput {
+  create: [TodoCreateWithoutUserInput!]
+  connectOrCreate: [TodoCreateOrConnectWithoutUserInput!]
+  connect: [TodoWhereUniqueInput!]
+}
+
+input TodoCreateWithoutUserInput {
+  todo: String!
+  limit: DateTime!
+  done_at: Boolean!
+}
+
+input TodoCreateOrConnectWithoutUserInput {
+  where: TodoWhereUniqueInput!
+  create: TodoCreateWithoutUserInput!
 }
