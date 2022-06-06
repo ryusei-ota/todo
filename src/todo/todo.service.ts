@@ -10,29 +10,29 @@ import { DeleteOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/del
 @Injectable()
 export class TodoService {
   constructor(private readonly prisma: PrismaService) {}
-  
+
   //1件取得
-  async findFirst(args: FindFirsttodoArgs): Promise<todo> {
-    return this.prisma.todo.findFirst(args);
+  async findFirst(args: FindFirsttodoArgs) {
+    return await this.prisma.todo.findFirst(args);
   }
 
   //全件取得
-  async findAll(args:FindManytodoArgs): Promise<todo[]> {
+  async findAll(args: FindManytodoArgs) {
     return await this.prisma.todo.findMany();
   }
 
   //登録
-  async createTodo(args: CreateOnetodoArgs): Promise<todo> {
-    return this.prisma.todo.create(args);
+  async createTodo(args: CreateOnetodoArgs) {
+    return await this.prisma.todo.create(args);
   }
 
   //更新
-  async updateTodo(args: UpdateOnetodoArgs): Promise<todo> {
-    return this.prisma.todo.update(args);
+  async updateTodo(args: UpdateOnetodoArgs) {
+    return await this.prisma.todo.update(args);
   }
 
   //削除
-  async deleteTodo(args:DeleteOnetodoArgs){
-    return this.prisma.todo.delete(args);
+  async deleteTodo(args: DeleteOnetodoArgs) {
+    return await this.prisma.todo.delete(args);
   }
 }

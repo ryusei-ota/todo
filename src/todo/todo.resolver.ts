@@ -13,8 +13,8 @@ export class TodoResolver {
 
   //1件取得
   @Query(() => todo)
-  todo(@Args() args: FindFirsttodoArgs) {
-    return this.todoService.findFirst(args);
+  async todo(@Args() args: FindFirsttodoArgs) {
+    return await this.todoService.findFirst(args);
   }
 
   //全件取得
@@ -26,18 +26,18 @@ export class TodoResolver {
   //登録
   @Mutation(() => todo)
   async createTodo(@Args() args: CreateOnetodoArgs) {
-    return this.todoService.createTodo(args);
+    return await this.todoService.createTodo(args);
   }
 
   //更新
   @Mutation(() => todo)
   async updateTodo(@Args() args: UpdateOnetodoArgs) {
-    return this.todoService.updateTodo(args);
+    return await this.todoService.updateTodo(args);
   }
 
   //削除
   @Mutation(() => todo)
-  async deleteTodo(@Args() args: DeleteOnetodoArgs){
-    return this.todoService.deleteTodo(args);
+  async deleteTodo(@Args() args: DeleteOnetodoArgs) {
+    return await this.todoService.deleteTodo(args);
   }
 }
