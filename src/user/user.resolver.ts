@@ -3,7 +3,6 @@ import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
 import { UserService } from './user.service';
 import { CreateOneUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/create-one-user.args';
 import { DeleteOneUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/delete-one-user.args';
-import { Todo } from 'src/@generated/prisma-nestjs-graphql/todo/todo.model';
 import { FindManyUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-many-user.args';
 
 @Resolver(() => User)
