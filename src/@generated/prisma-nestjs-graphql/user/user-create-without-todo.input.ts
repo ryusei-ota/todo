@@ -7,6 +7,7 @@ import { HideField } from '@nestjs/graphql';
 export class UserCreateWithoutTodoInput {
 
     @Field(() => String, {nullable:false})
+    @Validator.IsEmail()
     email!: string;
 
     @Field(() => String, {nullable:false})
@@ -16,6 +17,9 @@ export class UserCreateWithoutTodoInput {
     @Field(() => String, {nullable:false})
     @Validator.MinLength(8)
     password!: string;
+
+    @HideField()
+    hashedRefreshToken?: string;
 
     @HideField()
     createdAt?: Date | string;

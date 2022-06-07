@@ -11,6 +11,7 @@ export class UserUncheckedCreateWithoutTodoInput {
     id?: number;
 
     @Field(() => String, {nullable:false})
+    @Validator.IsEmail()
     email!: string;
 
     @Field(() => String, {nullable:false})
@@ -20,6 +21,9 @@ export class UserUncheckedCreateWithoutTodoInput {
     @Field(() => String, {nullable:false})
     @Validator.MinLength(8)
     password!: string;
+
+    @HideField()
+    hashedRefreshToken?: string;
 
     @HideField()
     createdAt?: Date | string;

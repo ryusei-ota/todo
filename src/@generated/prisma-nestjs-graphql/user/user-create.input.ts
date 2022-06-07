@@ -11,6 +11,7 @@ export class UserCreateInput {
     todo?: TodoCreateNestedManyWithoutUserInput;
 
     @Field(() => String, {nullable:false})
+    @Validator.IsEmail()
     email!: string;
 
     @Field(() => String, {nullable:false})
@@ -20,6 +21,9 @@ export class UserCreateInput {
     @Field(() => String, {nullable:false})
     @Validator.MinLength(8)
     password!: string;
+
+    @HideField()
+    hashedRefreshToken?: string;
 
     @HideField()
     createdAt?: Date | string;

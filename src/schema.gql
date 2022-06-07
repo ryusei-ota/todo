@@ -9,8 +9,6 @@ type UserCount {
 type User {
   id: ID!
   todo: [Todo!]
-
-  """@Validator.@IsEmail()"""
   email: String!
   name: String!
   _count: UserCount!
@@ -32,6 +30,7 @@ scalar DateTime
 
 type LoginResponse {
   access_token: String!
+  refresh_token: String!
   user: User!
 }
 
@@ -39,6 +38,7 @@ type Query {
   todo(where: TodoWhereInput, orderBy: [TodoOrderByWithRelationInput!], cursor: TodoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): Todo!
   findAll(where: TodoWhereInput, orderBy: [TodoOrderByWithRelationInput!], cursor: TodoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): [Todo!]!
   findAllUser(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): [User!]!
+  user(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): User!
 }
 
 input TodoWhereInput {
@@ -226,6 +226,7 @@ enum UserScalarFieldEnum {
   email
   name
   password
+  hashedRefreshToken
   createdAt
   updatedAt
 }
@@ -237,6 +238,8 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User!
   login(loginUserInput: LoginUserInput!): LoginResponse!
+  refreshToken: LoginResponse!
+  logout: Boolean!
 }
 
 input TodoCreateInput {

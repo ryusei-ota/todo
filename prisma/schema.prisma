@@ -48,13 +48,15 @@ model User{
   /// @Field(type => Int)
   id Int @id @default(autoincrement())
   todo Todo[]
-  /// @Validator.@IsEmail()
+  /// @Validator.IsEmail()
   email       String    @unique
   /// @Validator.IsNotEmpty()
   name        String
   /// @HideField()
   /// @Validator.MinLength(8)
   password    String
+  /// @HideField({ input: true, output: true })
+  hashedRefreshToken String?
   /// @HideField({ input: true, output: true })
   createdAt DateTime @default(now())
   /// @HideField({ input: true, output: true })

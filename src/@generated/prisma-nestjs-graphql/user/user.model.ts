@@ -14,10 +14,7 @@ export class User {
     @Field(() => [Todo], {nullable:true})
     todo?: Array<Todo>;
 
-    /**
-     * @Validator.@IsEmail()
-     */
-    @Field(() => String, {nullable:false,description:'@Validator.@IsEmail()'})
+    @Field(() => String, {nullable:false})
     email!: string;
 
     @Field(() => String, {nullable:false})
@@ -25,6 +22,9 @@ export class User {
 
     @HideField()
     password!: string;
+
+    @HideField()
+    hashedRefreshToken!: string | null;
 
     @HideField()
     createdAt!: Date;

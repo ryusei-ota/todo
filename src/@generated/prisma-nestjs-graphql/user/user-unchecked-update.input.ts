@@ -3,8 +3,9 @@ import { InputType } from '@nestjs/graphql';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { TodoUncheckedUpdateManyWithoutUserInput } from '../todo/todo-unchecked-update-many-without-user.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
-import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
+import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { HideField } from '@nestjs/graphql';
+import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 
 @InputType()
 export class UserUncheckedUpdateInput {
@@ -23,6 +24,9 @@ export class UserUncheckedUpdateInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     password?: StringFieldUpdateOperationsInput;
+
+    @HideField()
+    hashedRefreshToken?: NullableStringFieldUpdateOperationsInput;
 
     @HideField()
     createdAt?: DateTimeFieldUpdateOperationsInput;

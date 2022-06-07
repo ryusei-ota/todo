@@ -7,6 +7,7 @@ import { DeleteOneUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/del
 import { FindManyUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-many-user.args';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { FindFirstUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-first-user.args';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -30,5 +31,11 @@ export class UserResolver {
   @UseGuards(JwtAuthGuard)
   async findAllUser(@Args() args: FindManyUserArgs) {
     return await this.userService.findAllUser(args);
+  }
+
+  @Query(() => User)
+  @UseGuards(JwtAuthGuard)
+  user(@Args() args: FindFirstUserArgs){
+    return this.userService.findFirst(args)
   }
 }
