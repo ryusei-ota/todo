@@ -25,13 +25,13 @@ export class UserWhereInput {
     todo?: TodoListRelationFilter;
 
     @Field(() => StringFilter, {nullable:true})
+    email?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
     name?: StringFilter;
 
     @Field(() => StringFilter, {nullable:true})
     password?: StringFilter;
-
-    @Field(() => StringFilter, {nullable:true})
-    email?: StringFilter;
 
     @HideField()
     createdAt?: DateTimeFilter;

@@ -9,10 +9,10 @@ type UserCount {
 type User {
   id: ID!
   todo: [Todo!]
-  name: String!
 
   """@Validator.@IsEmail()"""
   email: String!
+  name: String!
   _count: UserCount!
 }
 
@@ -146,9 +146,9 @@ input UserWhereInput {
   NOT: [UserWhereInput!]
   id: IntFilter
   todo: TodoListRelationFilter
+  email: StringFilter
   name: StringFilter
   password: StringFilter
-  email: StringFilter
 }
 
 input TodoListRelationFilter {
@@ -196,9 +196,9 @@ enum SortOrder {
 input UserOrderByWithRelationInput {
   id: SortOrder
   todo: TodoOrderByRelationAggregateInput
+  email: SortOrder
   name: SortOrder
   password: SortOrder
-  email: SortOrder
 }
 
 input TodoOrderByRelationAggregateInput {
@@ -223,9 +223,9 @@ input UserWhereUniqueInput {
 
 enum UserScalarFieldEnum {
   id
+  email
   name
   password
-  email
   createdAt
   updatedAt
 }
@@ -253,9 +253,9 @@ input UserCreateNestedOneWithoutTodoInput {
 }
 
 input UserCreateWithoutTodoInput {
+  email: String!
   name: String!
   password: String!
-  email: String!
 }
 
 input UserCreateOrConnectWithoutTodoInput {
@@ -298,16 +298,16 @@ input UserUpsertWithoutTodoInput {
 }
 
 input UserUpdateWithoutTodoInput {
+  email: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
 }
 
 input UserCreateInput {
   todo: TodoCreateNestedManyWithoutUserInput
+  email: String!
   name: String!
   password: String!
-  email: String!
 }
 
 input TodoCreateNestedManyWithoutUserInput {

@@ -15,14 +15,15 @@ export class UserUncheckedCreateInput {
     todo?: TodoUncheckedCreateNestedManyWithoutUserInput;
 
     @Field(() => String, {nullable:false})
+    email!: string;
+
+    @Field(() => String, {nullable:false})
+    @Validator.IsNotEmpty()
     name!: string;
 
     @Field(() => String, {nullable:false})
     @Validator.MinLength(8)
     password!: string;
-
-    @Field(() => String, {nullable:false})
-    email!: string;
 
     @HideField()
     createdAt?: Date | string;

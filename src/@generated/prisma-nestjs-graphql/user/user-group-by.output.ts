@@ -15,13 +15,13 @@ export class UserGroupBy {
     id!: number;
 
     @Field(() => String, {nullable:false})
+    email!: string;
+
+    @Field(() => String, {nullable:false})
     name!: string;
 
     @HideField()
     password!: string;
-
-    @Field(() => String, {nullable:false})
-    email!: string;
 
     @HideField()
     createdAt!: Date | string;
