@@ -51,6 +51,8 @@ model User{
   /// @IsNotEmpty()
   ///@IsString()
   name String
+  /// @HideField({ input: true, output: true })
   createdAt DateTime @default(now())
+  /// @HideField({ input: true, output: true })
   updatedAt DateTime @updatedAt
 }

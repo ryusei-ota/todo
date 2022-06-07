@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { TodoCreateNestedManyWithoutUserInput } from '../todo/todo-create-nested-many-without-user.input';
+import { HideField } from '@nestjs/graphql';
 
 @InputType()
 export class UserCreateInput {
@@ -11,9 +12,9 @@ export class UserCreateInput {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => Date, {nullable:true})
+    @HideField()
     createdAt?: Date | string;
 
-    @Field(() => Date, {nullable:true})
+    @HideField()
     updatedAt?: Date | string;
 }

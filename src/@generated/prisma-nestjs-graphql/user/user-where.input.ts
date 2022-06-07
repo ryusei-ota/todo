@@ -4,6 +4,7 @@ import { IntFilter } from '../prisma/int-filter.input';
 import { TodoListRelationFilter } from '../todo/todo-list-relation-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
+import { HideField } from '@nestjs/graphql';
 
 @InputType()
 export class UserWhereInput {
@@ -26,9 +27,9 @@ export class UserWhereInput {
     @Field(() => StringFilter, {nullable:true})
     name?: StringFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
+    @HideField()
     createdAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
+    @HideField()
     updatedAt?: DateTimeFilter;
 }

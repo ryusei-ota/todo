@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
 import { Todo } from '../todo/todo.model';
+import { HideField } from '@nestjs/graphql';
 import { UserCount } from './user-count.output';
 
 @ObjectType()
@@ -16,10 +17,10 @@ export class User {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => Date, {nullable:false})
+    @HideField()
     createdAt!: Date;
 
-    @Field(() => Date, {nullable:false})
+    @HideField()
     updatedAt!: Date;
 
     @Field(() => UserCount, {nullable:false})

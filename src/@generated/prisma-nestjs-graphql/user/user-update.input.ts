@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { TodoUpdateManyWithoutUserInput } from '../todo/todo-update-many-without-user.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
+import { HideField } from '@nestjs/graphql';
 
 @InputType()
 export class UserUpdateInput {
@@ -13,9 +14,9 @@ export class UserUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     name?: StringFieldUpdateOperationsInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    @HideField()
     createdAt?: DateTimeFieldUpdateOperationsInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    @HideField()
     updatedAt?: DateTimeFieldUpdateOperationsInput;
 }

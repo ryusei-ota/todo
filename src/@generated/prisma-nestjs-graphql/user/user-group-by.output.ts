@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { HideField } from '@nestjs/graphql';
 import { UserCountAggregate } from './user-count-aggregate.output';
 import { UserAvgAggregate } from './user-avg-aggregate.output';
 import { UserSumAggregate } from './user-sum-aggregate.output';
@@ -16,10 +17,10 @@ export class UserGroupBy {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => Date, {nullable:false})
+    @HideField()
     createdAt!: Date | string;
 
-    @Field(() => Date, {nullable:false})
+    @HideField()
     updatedAt!: Date | string;
 
     @Field(() => UserCountAggregate, {nullable:true})
