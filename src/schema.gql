@@ -210,33 +210,38 @@ enum TodoScalarFieldEnum {
 }
 
 type Mutation {
-  createTodo(data: UserCreateInput!): User!
+  createTodo(data: TodoCreateInput!): Todo!
   updateTodo(data: TodoUpdateInput!, where: TodoWhereUniqueInput!): Todo!
   deleteTodo(where: TodoWhereUniqueInput!): Todo!
+  createUser(data: UserCreateInput!): User!
 }
 
-input UserCreateInput {
-  todo: TodoCreateNestedManyWithoutUserInput
+input TodoCreateInput {
+  todo: String!
+  limit: DateTime!
+  done_at: Boolean!
+  user: UserCreateNestedOneWithoutTodoInput
+}
+
+input UserCreateNestedOneWithoutTodoInput {
+  create: UserCreateWithoutTodoInput
+  connectOrCreate: UserCreateOrConnectWithoutTodoInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutTodoInput {
   name: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
 
-input TodoCreateNestedManyWithoutUserInput {
-  create: [TodoCreateWithoutUserInput!]
-  connectOrCreate: [TodoCreateOrConnectWithoutUserInput!]
-  connect: [TodoWhereUniqueInput!]
+input UserCreateOrConnectWithoutTodoInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutTodoInput!
 }
 
-input TodoCreateWithoutUserInput {
-  todo: String!
-  limit: DateTime!
-  done_at: Boolean!
-}
-
-input TodoCreateOrConnectWithoutUserInput {
-  where: TodoWhereUniqueInput!
-  create: TodoCreateWithoutUserInput!
+input UserWhereUniqueInput {
+  id: Int
 }
 
 input TodoUpdateInput {
@@ -268,21 +273,6 @@ input UserUpdateOneWithoutTodoInput {
   update: UserUpdateWithoutTodoInput
 }
 
-input UserCreateWithoutTodoInput {
-  name: String!
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input UserCreateOrConnectWithoutTodoInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutTodoInput!
-}
-
-input UserWhereUniqueInput {
-  id: Int
-}
-
 input UserUpsertWithoutTodoInput {
   update: UserUpdateWithoutTodoInput!
   create: UserCreateWithoutTodoInput!
@@ -292,4 +282,28 @@ input UserUpdateWithoutTodoInput {
   name: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserCreateInput {
+  todo: TodoCreateNestedManyWithoutUserInput
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TodoCreateNestedManyWithoutUserInput {
+  create: [TodoCreateWithoutUserInput!]
+  connectOrCreate: [TodoCreateOrConnectWithoutUserInput!]
+  connect: [TodoWhereUniqueInput!]
+}
+
+input TodoCreateWithoutUserInput {
+  todo: String!
+  limit: DateTime!
+  done_at: Boolean!
+}
+
+input TodoCreateOrConnectWithoutUserInput {
+  where: TodoWhereUniqueInput!
+  create: TodoCreateWithoutUserInput!
 }

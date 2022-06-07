@@ -9,7 +9,7 @@ export class UserResolver {
   
   //登録
   @Mutation(() => User)
-  async createTodo(@Args() args: CreateOneUserArgs) {
+  async createUser(@Args() args: CreateOneUserArgs) {
     return this.userService.createUser(args);
   }
 }
