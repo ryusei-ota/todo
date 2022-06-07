@@ -51,6 +51,12 @@ model User{
   /// @IsNotEmpty()
   ///@IsString()
   name String
+  /// @HideField()
+  /// @Validator.MinLength(8)
+  password    String
+  /// @Validator.@IsEmail()
+  email       String    @unique
+  /// @Validator.MinLength(8)
   /// @HideField({ input: true, output: true })
   createdAt DateTime @default(now())
   /// @HideField({ input: true, output: true })

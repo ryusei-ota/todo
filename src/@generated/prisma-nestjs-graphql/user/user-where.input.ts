@@ -27,6 +27,12 @@ export class UserWhereInput {
     @Field(() => StringFilter, {nullable:true})
     name?: StringFilter;
 
+    @Field(() => StringFilter, {nullable:true})
+    password?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
+    email?: StringFilter;
+
     @HideField()
     createdAt?: DateTimeFilter;
 

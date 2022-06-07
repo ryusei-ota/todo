@@ -18,6 +18,15 @@ export class User {
     name!: string;
 
     @HideField()
+    password!: string;
+
+    /**
+     * @Validator.@IsEmail()
+     */
+    @Field(() => String, {nullable:false,description:'@Validator.@IsEmail()'})
+    email!: string;
+
+    @HideField()
     createdAt!: Date;
 
     @HideField()

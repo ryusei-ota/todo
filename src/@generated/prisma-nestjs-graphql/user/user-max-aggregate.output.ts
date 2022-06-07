@@ -13,6 +13,12 @@ export class UserMaxAggregate {
     name?: string;
 
     @HideField()
+    password?: string;
+
+    @Field(() => String, {nullable:true})
+    email?: string;
+
+    @HideField()
     createdAt?: Date | string;
 
     @HideField()

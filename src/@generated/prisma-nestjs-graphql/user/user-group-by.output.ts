@@ -18,6 +18,12 @@ export class UserGroupBy {
     name!: string;
 
     @HideField()
+    password!: string;
+
+    @Field(() => String, {nullable:false})
+    email!: string;
+
+    @HideField()
     createdAt!: Date | string;
 
     @HideField()

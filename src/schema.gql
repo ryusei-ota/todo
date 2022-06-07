@@ -10,6 +10,9 @@ type User {
   id: ID!
   todo: [Todo!]
   name: String!
+
+  """@Validator.@IsEmail()"""
+  email: String!
   _count: UserCount!
 }
 
@@ -26,6 +29,11 @@ type Todo {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
 
 type Query {
   todo(where: TodoWhereInput, orderBy: [TodoOrderByWithRelationInput!], cursor: TodoWhereUniqueInput, take: Int, skip: Int, distinct: [TodoScalarFieldEnum!]): Todo!
@@ -139,6 +147,8 @@ input UserWhereInput {
   id: IntFilter
   todo: TodoListRelationFilter
   name: StringFilter
+  password: StringFilter
+  email: StringFilter
 }
 
 input TodoListRelationFilter {
@@ -187,6 +197,8 @@ input UserOrderByWithRelationInput {
   id: SortOrder
   todo: TodoOrderByRelationAggregateInput
   name: SortOrder
+  password: SortOrder
+  email: SortOrder
 }
 
 input TodoOrderByRelationAggregateInput {
@@ -206,11 +218,14 @@ enum TodoScalarFieldEnum {
 
 input UserWhereUniqueInput {
   id: Int
+  email: String
 }
 
 enum UserScalarFieldEnum {
   id
   name
+  password
+  email
   createdAt
   updatedAt
 }
@@ -221,6 +236,7 @@ type Mutation {
   deleteTodo(where: TodoWhereUniqueInput!): Todo!
   createUser(data: UserCreateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User!
+  login(loginUserInput: LoginUserInput!): LoginResponse!
 }
 
 input TodoCreateInput {
@@ -238,6 +254,8 @@ input UserCreateNestedOneWithoutTodoInput {
 
 input UserCreateWithoutTodoInput {
   name: String!
+  password: String!
+  email: String!
 }
 
 input UserCreateOrConnectWithoutTodoInput {
@@ -281,11 +299,15 @@ input UserUpsertWithoutTodoInput {
 
 input UserUpdateWithoutTodoInput {
   name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
 }
 
 input UserCreateInput {
   todo: TodoCreateNestedManyWithoutUserInput
   name: String!
+  password: String!
+  email: String!
 }
 
 input TodoCreateNestedManyWithoutUserInput {
@@ -303,4 +325,9 @@ input TodoCreateWithoutUserInput {
 input TodoCreateOrConnectWithoutUserInput {
   where: TodoWhereUniqueInput!
   create: TodoCreateWithoutUserInput!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
 }

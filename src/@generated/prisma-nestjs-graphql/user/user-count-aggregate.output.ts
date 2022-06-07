@@ -13,6 +13,12 @@ export class UserCountAggregate {
     name!: number;
 
     @HideField()
+    password!: number;
+
+    @Field(() => Int, {nullable:false})
+    email!: number;
+
+    @HideField()
     createdAt!: number;
 
     @HideField()
