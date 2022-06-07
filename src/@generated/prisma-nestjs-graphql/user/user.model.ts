@@ -13,8 +13,8 @@ export class User {
     @Field(() => [Todo], {nullable:true})
     todo?: Array<Todo>;
 
-    @Field(() => String, {nullable:true})
-    name!: string | null;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => Date, {nullable:false})
     createdAt!: Date;

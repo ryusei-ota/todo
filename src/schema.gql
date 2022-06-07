@@ -9,7 +9,7 @@ type UserCount {
 type User {
   id: ID!
   todo: [Todo!]
-  name: String
+  name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
   _count: UserCount!
@@ -139,7 +139,7 @@ input UserWhereInput {
   NOT: [UserWhereInput!]
   id: IntFilter
   todo: TodoListRelationFilter
-  name: StringNullableFilter
+  name: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
 }
@@ -148,34 +148,6 @@ input TodoListRelationFilter {
   every: TodoWhereInput
   some: TodoWhereInput
   none: TodoWhereInput
-}
-
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
-}
-
-input NestedStringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
 }
 
 input IntNullableFilter {
@@ -245,7 +217,7 @@ type Mutation {
 
 input UserCreateInput {
   todo: TodoCreateNestedManyWithoutUserInput
-  name: String
+  name: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -297,7 +269,7 @@ input UserUpdateOneWithoutTodoInput {
 }
 
 input UserCreateWithoutTodoInput {
-  name: String
+  name: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -317,11 +289,7 @@ input UserUpsertWithoutTodoInput {
 }
 
 input UserUpdateWithoutTodoInput {
-  name: NullableStringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
-input NullableStringFieldUpdateOperationsInput {
-  set: String
 }

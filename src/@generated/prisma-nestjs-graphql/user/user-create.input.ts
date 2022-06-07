@@ -8,8 +8,8 @@ export class UserCreateInput {
     @Field(() => TodoCreateNestedManyWithoutUserInput, {nullable:true})
     todo?: TodoCreateNestedManyWithoutUserInput;
 
-    @Field(() => String, {nullable:true})
-    name?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;

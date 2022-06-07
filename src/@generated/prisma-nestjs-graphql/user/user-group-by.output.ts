@@ -13,8 +13,8 @@ export class UserGroupBy {
     @Field(() => Int, {nullable:false})
     id!: number;
 
-    @Field(() => String, {nullable:true})
-    name?: string;
+    @Field(() => String, {nullable:false})
+    name!: string;
 
     @Field(() => Date, {nullable:false})
     createdAt!: Date | string;
