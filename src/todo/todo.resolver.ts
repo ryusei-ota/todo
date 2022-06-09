@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { Todo } from 'src/@generated/prisma-nestjs-graphql/todo/todo.model';
 import { TodoService } from 'src/todo/todo.service';
 import { FindFirsttodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/find-firsttodo.args';
@@ -6,10 +6,31 @@ import { FindManytodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/find
 import { CreateOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/create-onetodo.args';
 import { UpdateOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/update-onetodo.args';
 import { DeleteOnetodoArgs } from 'src/@generated/prisma-nestjs-graphql/todo/delete-onetodo.args';
+import { PubSub } from 'graphql-subscriptions';
+
+const pubsub = new PubSub();
 
 @Resolver(() => Todo)
 export class TodoResolver {
   constructor(private readonly todoService: TodoService) {}
+
+  @Subscription(
+    () => Todo,
+    {
+      name: 'todoAdded',
+    },
+  )
+
+  async todoAdded() {
+    return pubsub.asyncIterator('todoAdded');
+  }
+
+  //登録
+  @Mutation(() => Todo)
+  async createTodo(@Args() args: CreateOnetodoArgs) {
+    pubsub.publish('todoAdded', { todoAdded: args});
+    return this.todoService.createTodo(args);
+  }  
 
   //1件取得
   @Query(() => Todo)
@@ -23,12 +44,7 @@ export class TodoResolver {
     return await this.todoService.findAll(args);
   }
 
-  //登録
-  @Mutation(() => Todo)
-  async createTodo(@Args() args: CreateOnetodoArgs) {
-    return this.todoService.createTodo(args);
-  }
-
+  
   //更新
   @Mutation(() => Todo)
   async updateTodo(@Args() args: UpdateOnetodoArgs) {

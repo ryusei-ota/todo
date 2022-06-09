@@ -35,4 +35,5 @@ export class TodoService {
   async deleteTodo(args: DeleteOnetodoArgs) {
     return this.prisma.todo.delete(args);
   }
+  
 }

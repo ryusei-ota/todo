@@ -304,3 +304,7 @@ input TodoCreateOrConnectWithoutUserInput {
   where: TodoWhereUniqueInput!
   create: TodoCreateWithoutUserInput!
 }
+
+type Subscription {
+  todoAdded: Todo!
+}
