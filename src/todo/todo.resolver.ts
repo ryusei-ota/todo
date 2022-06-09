@@ -28,7 +28,7 @@ export class TodoResolver {
   //登録
   @Mutation(() => Todo)
   async createTodo(@Args() args: CreateOnetodoArgs) {
-    pubsub.publish('todoAdded', { todoAdded: args});
+    pubsub.publish('todoAdded', { todoAdded: this.todoService.createTodo(args)});
     return this.todoService.createTodo(args);
   }  
 
