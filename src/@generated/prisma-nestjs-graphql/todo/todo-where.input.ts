@@ -9,31 +9,30 @@ import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 
 @InputType()
 export class TodoWhereInput {
+  @Field(() => [TodoWhereInput], { nullable: true })
+  AND?: Array<TodoWhereInput>;
 
-    @Field(() => [TodoWhereInput], {nullable:true})
-    AND?: Array<TodoWhereInput>;
+  @Field(() => [TodoWhereInput], { nullable: true })
+  OR?: Array<TodoWhereInput>;
 
-    @Field(() => [TodoWhereInput], {nullable:true})
-    OR?: Array<TodoWhereInput>;
+  @Field(() => [TodoWhereInput], { nullable: true })
+  NOT?: Array<TodoWhereInput>;
 
-    @Field(() => [TodoWhereInput], {nullable:true})
-    NOT?: Array<TodoWhereInput>;
+  @Field(() => IntFilter, { nullable: true })
+  id?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    id?: IntFilter;
+  @Field(() => StringFilter, { nullable: true })
+  todo?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    todo?: StringFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  limit?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    limit?: DateTimeFilter;
+  @Field(() => BoolFilter, { nullable: true })
+  done_at?: BoolFilter;
 
-    @Field(() => BoolFilter, {nullable:true})
-    done_at?: BoolFilter;
+  @Field(() => UserRelationFilter, { nullable: true })
+  user?: UserRelationFilter;
 
-    @Field(() => UserRelationFilter, {nullable:true})
-    user?: UserRelationFilter;
-
-    @Field(() => IntNullableFilter, {nullable:true})
-    userId?: IntNullableFilter;
+  @Field(() => IntNullableFilter, { nullable: true })
+  userId?: IntNullableFilter;
 }

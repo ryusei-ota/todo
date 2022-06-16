@@ -24,17 +24,17 @@ export class UsersService {
 
   async findFirst(args: FindFirstUserArgs): Promise<User | null> {
     return this.prisma.user.findFirst(args);
-}
+  }
 
-async findUnique(args: FindUniqueUserArgs): Promise<User | null> {
+  async findUnique(args: FindUniqueUserArgs): Promise<User | null> {
     return this.prisma.user.findUnique(args);
-}
+  }
 
-async createUser(args: CreateOneUserArgs): Promise<User> {
+  async createUser(args: CreateOneUserArgs): Promise<User> {
     return this.prisma.user.create(args);
-}
+  }
 
   async update(args: UpdateOneUserArgs): Promise<User> {
-      return this.prisma.user.update(args)
+    return this.prisma.user.update(args);
   }
 }
